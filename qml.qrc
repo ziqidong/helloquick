@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/rect.qml</file>
+        <file>qml/layout.qml</file>
+        <file>qml/MessageLabel.qml</file>
+        <file>qml/sidepanel.qml</file>
+        <file>qml/ZParam.qml</file>
+        <file>qml/ZNode.qml</file>
+        <file>qml/testParam.qml</file>
+        <file>qml/testNode.qml</file>
+        <file>images/qt-logo.png</file>
+        <file>images/qt-logo@2x.png</file>
+        <file>images/qt-logo@3x.png</file>
+        <file>images/qt-logo@4x.png</file>
+    </qresource>
+</RCC>
