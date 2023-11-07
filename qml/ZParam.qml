@@ -6,36 +6,20 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
 
-/*
 Row {
+    id: qmlparam
     property string name;
     ZQuickParam {
-        id: param_template
-        name: parent.name
+        id: thisdata
+        name: qmlparam.name
     }
     Text {
-        text: param_template.name
+        text: thisdata.name
         anchors.verticalCenter: parent.verticalCenter
     }
     Button {
         id: button1
-        text: param_template.name
+        text: thisdata.name
     }
     spacing: 20
-}
-*/
-
-ZQuickParam {
-    id: param_template
-    Row {
-        Text {
-            text: param_template.name
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Button {
-            id: button1
-            text: param_template.name
-        }
-        spacing: 20
-    }
 }

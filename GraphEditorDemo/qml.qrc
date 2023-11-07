@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MessageLabel.qml</file>
+        <file>sidepanel.qml</file>
+        <file>images/qt-logo.png</file>
+        <file>images/qt-logo@2x.png</file>
+        <file>images/qt-logo@3x.png</file>
+        <file>images/qt-logo@4x.png</file>
+        <file>Edge.qml</file>
+        <file>GraphEditor.qml</file>
+        <file>NodePair.qml</file>
+    </qresource>
+</RCC>

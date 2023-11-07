@@ -12,16 +12,16 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
+
     ZNode {
-        id: nodeident
+        id: yyy_CreateCube
+        name: "CreateCube"
     }
 
-    /*
-    Connections {
-        target: nodeident
-        function onNewnodeCommand()
-        {
-            console.log("onNewnodeCommand")
-        }
-    }*/
+    ZNode {
+        id: xxx_CreateSphere
+        name: "CreateSphere"
+        x: 200
+        y: 150
+    }
 }
