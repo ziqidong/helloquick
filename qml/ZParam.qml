@@ -6,7 +6,7 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
 
-Row {
+RowLayout {
     id: qmlparam
     property string name;
     ZQuickParam {
@@ -15,11 +15,15 @@ Row {
     }
     Text {
         text: thisdata.name
-        anchors.verticalCenter: parent.verticalCenter
+        font.pixelSize: 18
+        font.bold: true
+        font.family: "Consolas"
+        color: "#dee6ed"
     }
     Button {
         id: button1
         text: thisdata.name
+        //Layout.fillWidth: true
     }
     spacing: 20
 }

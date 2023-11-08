@@ -37,6 +37,8 @@ set(source
     qml/ZNode.qml
     qml/testParam.qml
     qml/testNode.qml
+    qml/CustomBorder.qml
+    qml/StatusBtn.qml
 )
 
 add_executable(${PROJECT_NAME} ${source} "qml.qrc")

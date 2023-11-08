@@ -1,5 +1,4 @@
 import QtQuick 2.12
-import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.3
 import ZQuickNode 1.0
 import ZQuickParam 1.0
@@ -14,47 +13,61 @@ Rectangle {
     property string name
     //property list<ZParam> params
 
-    width: 150
-    height: 250
-    //color: "black"
-    border.color: "black"
-    border.width: 2
+    color: "black"
+
+    CustomBorder
+    {
+        commonBorderWidth: 2
+        borderColor: "black"
+    }
+
+    implicitWidth:  mainLayout.implicitWidth
+    implicitHeight: mainLayout.implicitHeight
 
     ZQuickNode {
         id: thisnode
         name: parent.name
     }
 
-    //Column  {
-        //spacing: 2
-
-        //anchors.fill: parent
-        //anchors.margins: border.width
+    ColumnLayout  {
+        id: mainLayout
+        spacing: 1
+        anchors.fill: parent
 
         Rectangle {
             id: node_header
-            color: "blue"
-            x: border.width
-            y: border.width
-            anchors.top:parent.top
-            width: parent.width// - 2*border.width
-            height: 40
-            Row {
+            color: "#246283"
+            //color: "transparent"
+            implicitWidth: header_layout.implicitWidth + header_layout.anchors.margins * 2
+            implicitHeight: header_layout.implicitHeight + header_layout.anchors.margins * 2
+            Layout.fillWidth: true
+
+            RowLayout {
+                id: header_layout
+                anchors.fill: parent
+                anchors.margins: 8
+
                 Text {
                    id: btnshowparams
                    text: thisnode.name
+                   font.family: "Consolas"
+                   font.pixelSize: 20;
+                   font.bold: true;
+                   color: "white"
                 }
             }
         }
 
-        
         Rectangle {
             id: node_body
-            color: "gray"
-            anchors.fill: parent
-            anchors.top : node_header.bottom
-            Column {
-                anchors.top : node_header.bottom
+            color: "#303030"
+
+            implicitWidth:  bodyLayout.implicitWidth
+            implicitHeight: bodyLayout.implicitHeight
+
+            ColumnLayout {
+                id: bodyLayout
+
                 ZParam {
                     id: param1
                     name: "position"
@@ -62,61 +75,28 @@ Rectangle {
 
                 ZParam {
                     id: param2
-                    name: "scale233"
+                    name: "Noise Element Size"
                 }
             }
         }
-    //}
+    }
 
     MouseArea {
         id: mouseArea1
         anchors.fill: parent
         drag.target: parent
+        /*
         onPressed: {
             //qmlnode.beginDrag = Qt.point(qmlnode.x, qmlnode.y);
         }
         onReleased: {
             
         }
-    }
-}
-
-
-/*
-ZQuickNode {
-    id: nodeexample
-
-    Rectangle {
-        anchors.fill: parent
-        color: "green"
-        width: 150
-        height: 250
-
-        Column  {
-            spacing: 15
-
-            anchors.fill: parent
-            anchors.margins: 0
-
-            Text {
-                id: btnshowparams
-                text: nodeexample.name
-            }
-
-            ZParam {
-                id: param1
-                name: "position"
-            }
-        
-            ZParam {
-                id: param2
-                name: "scale233"
-            }
-        }
+        */
     }
 
     Connections {
-        target: nodeexample
+        target: thisnode
         function onNewparamCommand()
         {
             //params.add(new ZParam {name:"param3"})
@@ -124,4 +104,3 @@ ZQuickNode {
         }
     }
 }
-*/
