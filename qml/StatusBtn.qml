@@ -11,14 +11,22 @@ Item {
     property alias color: path.fillColor
     property int xoffset: 22
     property int side: 35
+    property bool lastBtn: false
+
+    implicitWidth: xoffset + side
+    implicitHeight: parent.height
+
     Shape {
+        anchors.fill: parent
+        antialiasing: true
+
         ShapePath {
             id: path
             strokeColor: "transparent"
             strokeWidth: 0
             fillColor: "transparent"
             capStyle: ShapePath.RoundCap
-
+            
             property int joinStyleIndex: 0
 
             property variant styles: [
@@ -31,7 +39,7 @@ Item {
 
             startX: comp.xoffset
             startY: 0
-            PathLine { x: comp.xoffset + comp.side; y: 0 }
+            PathLine { x: comp.xoffset + comp.side - (comp.lastBtn ? comp.xoffset : 0); y: 0 }
             PathLine { x: comp.xoffset + comp.side - comp.xoffset; y: comp.height}
             PathLine { x: 0; y: comp.height }
         }

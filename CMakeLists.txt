@@ -39,6 +39,7 @@ set(source
     qml/testNode.qml
     qml/CustomBorder.qml
     qml/StatusBtn.qml
+    qml/StatusBtnGroup.qml
 )
 
 add_executable(${PROJECT_NAME} ${source} "qml.qrc")

@@ -39,7 +39,7 @@ Rectangle {
             color: "#246283"
             //color: "transparent"
             implicitWidth: header_layout.implicitWidth + header_layout.anchors.margins * 2
-            implicitHeight: header_layout.implicitHeight + header_layout.anchors.margins * 2
+            implicitHeight: 66
             Layout.fillWidth: true
 
             RowLayout {
@@ -55,6 +55,11 @@ Rectangle {
                    font.bold: true;
                    color: "white"
                 }
+            }
+            StatusBtnGroup {
+                anchors.top: node_header.top
+                anchors.right: node_header.right
+                anchors.bottom: node_header.bottom
             }
         }
 

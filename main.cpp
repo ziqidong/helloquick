@@ -6,6 +6,7 @@
 #include "quick_parameter.h"
 #include "quick_node.h"
 #include <QFontDatabase>
+#include <QSurfaceFormat>
 
 
 int main(int argc, char *argv[])
@@ -13,6 +14,11 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
+
+    QSurfaceFormat format;
+    format.setSamples(16);
+    QSurfaceFormat::setDefaultFormat(format);
+
     QQmlApplicationEngine engine;
 
     QFontDatabase::addApplicationFont("qrc:/font/MiSans/MiSans-Thin.ttf");
@@ -38,7 +44,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<ZQuickParam>("ZQuickParam", 1, 0, "ZQuickParam");
     qmlRegisterType<ZQuickNode>("ZQuickNode", 1, 0, "ZQuickNode");
 
-    engine.load(QUrl(QStringLiteral("qrc:/qml/rect.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/testNode.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
