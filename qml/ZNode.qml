@@ -16,36 +16,57 @@ Rectangle {
 
     width: 150
     height: 250
-    color: "green"
-    border.color: "gray"
-    border.width: 5
+    //color: "black"
+    border.color: "black"
+    border.width: 2
 
     ZQuickNode {
         id: thisnode
         name: parent.name
     }
 
-    Column  {
-        spacing: 15
+    //Column  {
+        //spacing: 2
 
-        anchors.fill: parent
-        anchors.margins: 0
+        //anchors.fill: parent
+        //anchors.margins: border.width
 
-        Text {
-            id: btnshowparams
-            text: thisnode.name
+        Rectangle {
+            id: node_header
+            color: "blue"
+            x: border.width
+            y: border.width
+            anchors.top:parent.top
+            width: parent.width// - 2*border.width
+            height: 40
+            Row {
+                Text {
+                   id: btnshowparams
+                   text: thisnode.name
+                }
+            }
         }
 
-        ZParam {
-            id: param1
-            name: "position"
-        }
+        
+        Rectangle {
+            id: node_body
+            color: "gray"
+            anchors.fill: parent
+            anchors.top : node_header.bottom
+            Column {
+                anchors.top : node_header.bottom
+                ZParam {
+                    id: param1
+                    name: "position"
+                }
 
-        ZParam {
-            id: param2
-            name: "scale233"
+                ZParam {
+                    id: param2
+                    name: "scale233"
+                }
+            }
         }
-    }
+    //}
 
     MouseArea {
         id: mouseArea1
