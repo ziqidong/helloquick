@@ -2,17 +2,20 @@ import QtQuick 2.12
 import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.3
 import ZQuickParam 1.0
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
 
 
 RowLayout {
     id: qmlparam
-    property string name;
+    property alias name: thisdata.name
+    property alias control: thisdata.control
+    spacing: 20
+
     ZQuickParam {
         id: thisdata
-        name: qmlparam.name
     }
+
     Socket {
     }
     Text {
@@ -22,10 +25,19 @@ RowLayout {
         font.family: "Consolas"
         color: "#dee6ed"
     }
+    /*
     Button {
         id: button1
         text: thisdata.name
         //Layout.fillWidth: true
+    }*/
+
+    Component.onCompleted: {
+        var component = Qt.createComponent("qrc:/qml/controls/ZVec4Editor.qml");
+        console.log(component.errorString())
+        if (component.status == Component.Ready) {
+            var controlObj = component.createObject(qmlparam)
+            //controlObj.Layout.fillWidth = true
+        }
     }
-    spacing: 20
 }

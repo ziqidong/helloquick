@@ -98,11 +98,13 @@ Rectangle {
                     ZParam {
                         id: param1
                         name: "position"
+                        control: ZQuickParam.CTRL_VEC3
                     }
 
                     ZParam {
                         id: param2
                         name: "Noise Element Size"
+                        control: ZQuickParam.CTRL_LINEEDIT
                     }
                 }
             }

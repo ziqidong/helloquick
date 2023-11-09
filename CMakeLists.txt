@@ -37,12 +37,24 @@ set(source
     qml/ZNode.qml
     qml/testParam.qml
     qml/testNode.qml
+    qml/testGraphEditor.qml
     qml/CustomBorder.qml
     qml/StatusBtn.qml
     qml/StatusBtnGroup.qml
     qml/StatusBtnSeperator.qml
     qml/GraphEditor.qml
     qml/Socket.qml
+    qml/controls/ZButton.qml
+    qml/controls/ZCheckBox.qml
+    qml/controls/ZColorBtn.qml
+    qml/controls/ZCombobox.qml
+    qml/controls/ZLineEditor.qml
+    qml/controls/ZPathEditor.qml
+    qml/controls/ZSlider.qml
+    qml/controls/ZTextEditor.qml
+    qml/controls/ZVec2Editor.qml
+    qml/controls/ZVec3Editor.qml
+    qml/controls/ZVec4Editor.qml
 )
 
 add_executable(${PROJECT_NAME} ${source} "qml.qrc")

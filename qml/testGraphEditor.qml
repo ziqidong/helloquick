@@ -12,15 +12,5 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
-    ZNode {
-        id: yyy_CreateCube
-        name: "CreateCube"
-    }
-
-    ZNode {
-        id: xxx_CreateSphere
-        name: "CreateSphere"
-        x: 200
-        y: 150
-    }
+    GraphEditor{}
 }
