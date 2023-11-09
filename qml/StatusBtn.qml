@@ -3,7 +3,7 @@ import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
-import QtQuick.Shapes 1.6
+import QtQuick.Shapes 1.15
 
 
 Item {
@@ -18,14 +18,17 @@ Item {
     implicitHeight: parent.height
 
     Shape {
+        id: sp
         anchors.fill: parent
         antialiasing: true
 
+        containsMode: Shape.FillContains
+        property bool clicked: false
         ShapePath {
             id: path
             strokeColor: "transparent"
             strokeWidth: 0
-            fillColor: "#2E313A"
+            fillColor: sp.clicked ? basefillcolor : "#2E313A"
             capStyle: ShapePath.RoundCap
             
             property int joinStyleIndex: 0
@@ -49,8 +52,18 @@ Item {
             PathLine { x: comp.xoffset + comp.side - comp.xoffset; y: comp.height}
             PathLine { x: 0; y: comp.height }
         }
+        MouseArea {
+            id: mouseArea
+            anchors.fill: parent
+            containmentMask: parent
+            //hoverEnabled: true
+            acceptedButtons: Qt.LeftButton
+            onClicked: {
+                parent.clicked = !parent.clicked
+            } 
+        }
 
-        HoverHandler{
+        /*HoverHandler{
             onHoveredChanged: {
                 if (hovered) {
                     path.fillColor = basefillcolor
@@ -59,15 +72,8 @@ Item {
                 }
                 console.log("hover handler")
             }
-        }
-
-        /*
-        MouseArea {
-            id: mouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            acceptedButtons: Qt.LeftButton
         }*/
+
     }
 }
 

@@ -29,62 +29,6 @@ Rectangle {
         name: parent.name
     }
 
-    ColumnLayout  {
-        id: mainLayout
-        spacing: 1
-        anchors.fill: parent
-
-        Rectangle {
-            id: node_header
-            color: "#246283"
-            //color: "transparent"
-            implicitWidth: header_layout.implicitWidth + header_layout.anchors.margins * 2
-            implicitHeight: 66
-            Layout.fillWidth: true
-
-            RowLayout {
-                id: header_layout
-                anchors.fill: parent
-                anchors.margins: 8
-
-                Text {
-                   id: btnshowparams
-                   text: thisnode.name
-                   font.family: "Consolas"
-                   font.pixelSize: 20;
-                   font.bold: true;
-                   color: "white"
-                }
-            }
-            StatusBtnGroup {
-                anchors.top: node_header.top
-                anchors.right: node_header.right
-                anchors.bottom: node_header.bottom
-            }
-        }
-
-        Rectangle {
-            id: node_body
-            color: "#303030"
-
-            implicitWidth:  bodyLayout.implicitWidth
-            implicitHeight: bodyLayout.implicitHeight
-
-            ColumnLayout {
-                id: bodyLayout
-
-                ZParam {
-                    id: param1
-                    name: "position"
-                }
-
-                ZParam {
-                    id: param2
-                    name: "Noise Element Size"
-                }
-            }
-        }
-    }
 
     MouseArea {
         id: mouseArea1
@@ -98,6 +42,62 @@ Rectangle {
             
         }
         */
+        ColumnLayout  {
+            id: mainLayout
+            spacing: 1
+            anchors.fill: parent
+
+            Rectangle {
+                id: node_header
+                color: "#246283"
+                //color: "transparent"
+                implicitWidth: header_layout.implicitWidth + header_layout.anchors.margins * 2
+                implicitHeight: 66
+                Layout.fillWidth: true
+
+                RowLayout {
+                    id: header_layout
+                    anchors.fill: parent
+                    anchors.margins: 8
+
+                    Text {
+                       id: btnshowparams
+                       text: thisnode.name
+                       font.family: "Consolas"
+                       font.pixelSize: 20;
+                       font.bold: true;
+                       color: "white"
+                    }
+                }
+                StatusBtnGroup {
+                    anchors.top: node_header.top
+                    anchors.right: node_header.right
+                    anchors.bottom: node_header.bottom
+                }
+            }
+
+            Rectangle {
+                id: node_body
+                color: "#303030"
+
+                implicitWidth:  bodyLayout.implicitWidth
+                implicitHeight: bodyLayout.implicitHeight
+
+                ColumnLayout {
+                    id: bodyLayout
+
+                    ZParam {
+                        id: param1
+                        name: "position"
+                    }
+
+                    ZParam {
+                        id: param2
+                        name: "Noise Element Size"
+                    }
+                }
+            }
+        }
     }
 
     Connections {
