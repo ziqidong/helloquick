@@ -57,7 +57,6 @@ Item {
                 }else{
                     path.fillColor = "#2E313A"
                 }
-                console.log("hover handler")
             }
         }
 

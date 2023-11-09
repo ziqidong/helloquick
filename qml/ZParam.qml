@@ -13,6 +13,8 @@ RowLayout {
         id: thisdata
         name: qmlparam.name
     }
+    Socket {
+    }
     Text {
         text: thisdata.name
         font.pixelSize: 18
