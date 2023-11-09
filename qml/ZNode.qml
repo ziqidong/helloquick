@@ -13,7 +13,11 @@ Rectangle {
     property string name
     //property list<ZParam> params
 
+    property int repeaterIndex
+
     color: "black"
+
+    signal showNodeMenu(var qmlnode, var pos)
 
     CustomBorder
     {
@@ -29,11 +33,11 @@ Rectangle {
         name: parent.name
     }
 
-
     MouseArea {
         id: mouseArea1
         anchors.fill: parent
         drag.target: parent
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
         /*
         onPressed: {
             //qmlnode.beginDrag = Qt.point(qmlnode.x, qmlnode.y);
@@ -42,6 +46,11 @@ Rectangle {
             
         }
         */
+        onClicked: {
+            if (mouse.button == Qt.RightButton) {
+                showNodeMenu(qmlnode, Qt.point(mouse.x, mouse.y))
+            }
+        }
         ColumnLayout  {
             id: mainLayout
             spacing: 1
