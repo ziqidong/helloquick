@@ -14,6 +14,7 @@
         <file>qml/StatusBtn.qml</file>
         <file>qml/StatusBtnGroup.qml</file>
         <file>qml/StatusBtnSeperator.qml</file>
+        <file>qml/GraphEditor.qml</file>
         <file>qml/Socket.qml</file>
         <file>images/qt-logo.png</file>
         <file>images/qt-logo@2x.png</file>

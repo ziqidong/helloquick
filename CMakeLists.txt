@@ -41,6 +41,7 @@ set(source
     qml/StatusBtn.qml
     qml/StatusBtnGroup.qml
     qml/StatusBtnSeperator.qml
+    qml/GraphEditor.qml
     qml/Socket.qml
 )
 
