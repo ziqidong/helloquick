@@ -42,6 +42,7 @@ set(source
     qml/StatusBtnGroup.qml
     qml/StatusBtnSeperator.qml
     qml/GraphEditor.qml
+    qml/Socket.qml
 )
 
 add_executable(${PROJECT_NAME} ${source} "qml.qrc")
