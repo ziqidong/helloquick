@@ -40,6 +40,7 @@ set(source
     qml/CustomBorder.qml
     qml/StatusBtn.qml
     qml/StatusBtnGroup.qml
+    qml/StatusBtnSeperator.qml
 )
 
 add_executable(${PROJECT_NAME} ${source} "qml.qrc")

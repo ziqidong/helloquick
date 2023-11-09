@@ -16,28 +16,38 @@ Item {
 
     StatusBtn {
         id: once_btn
-        color: "#FFBD21"
+        basefillcolor: "#FFBD21"
         height: parent.height
         xoffset: comp.xoffset
         side: comp.side
     }
 
-    StatusBtn {
-        id: mute_btn
-        color: "#E302F8"
-        height: parent.height
+    StatusBtnSeperator {
         xoffset: comp.xoffset
-        side: comp.side
         x: comp.side
     }
 
     StatusBtn {
+        id: mute_btn
+        basefillcolor: "#E302F8"
+        height: parent.height
+        xoffset: comp.xoffset
+        side: comp.side
+        x: comp.side + 1
+    }
+
+    StatusBtnSeperator {
+        xoffset: comp.xoffset
+        x: 2 * comp.side + 1
+    }
+
+    StatusBtn {
         id: view_btn
-        color: "#30BDD4"
+        basefillcolor: "#30BDD4"
         height: parent.height
         xoffset: comp.xoffset
         side: comp.side
         lastBtn: true
-        x: comp.side * 2
+        x: comp.side * 2 + 2
     }
 }
