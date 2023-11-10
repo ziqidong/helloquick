@@ -12,15 +12,24 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
-    ZNode {
-        id: yyy_CreateCube
-        name: "CreateCube"
-    }
 
-    ZNode {
-        id: xxx_CreateSphere
-        name: "CreateSphereCreateSphereCreateSphere"
-        x: 200
-        y: 150
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
+
+        onClicked: mouseArea.forceActiveFocus()  //make all textInput focus out: https://stackoverflow.com/questions/55101332/how-to-achieve-click-an-area-outside-the-textfield-to-make-the-textfield-lose-fo
+
+        ZNode {
+            id: yyy_CreateCube
+            name: "CreateCube"
+        }
+
+        ZNode {
+            id: xxx_CreateSphere
+            name: "CreateSphereCreateSphereCreateSphere"
+            x: 200
+            y: 150
+        }
     }
 }

@@ -62,7 +62,7 @@ RowLayout {
 
         if (component.status == Component.Ready) {
             var controlObj = component.createObject(qmlparam)
-            if (thisdata.control == ZQuickParam.CTRL_LINEEDIT)
+            if (thisdata.control == ZQuickParam.CTRL_LINEEDIT || thisdata.control == ZQuickParam.CTRL_MULTITEXT)
                 controlObj.Layout.fillWidth = true
         }
     }
