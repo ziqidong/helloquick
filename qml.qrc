@@ -17,6 +17,7 @@
         <file>qml/GraphEditor.qml</file>
         <file>qml/Socket.qml</file>
         <file>qml/testGraphEditor.qml</file>
+        <file>qml/FillSpacer.qml</file>
 
         <file>qml/controls/ZButton.qml</file>
         <file>qml/controls/ZCheckBox.qml</file>

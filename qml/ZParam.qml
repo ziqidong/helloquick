@@ -25,6 +25,8 @@ RowLayout {
         font.family: "Consolas"
         color: "#dee6ed"
     }
+    FillSpacer {}
+
     /*
     Button {
         id: button1
@@ -33,11 +35,11 @@ RowLayout {
     }*/
 
     Component.onCompleted: {
-        var component = Qt.createComponent("qrc:/qml/controls/ZVec4Editor.qml");
+        var component = Qt.createComponent("qrc:/qml/controls/ZLineEditor.qml");
         console.log(component.errorString())
         if (component.status == Component.Ready) {
             var controlObj = component.createObject(qmlparam)
-            //controlObj.Layout.fillWidth = true
+            controlObj.Layout.fillWidth = true
         }
     }
 }

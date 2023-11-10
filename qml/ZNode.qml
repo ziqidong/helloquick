@@ -60,14 +60,13 @@ Rectangle {
                 id: node_header
                 color: "#246283"
                 //color: "transparent"
-                implicitWidth: header_layout.implicitWidth + header_layout.anchors.margins * 2
+                implicitWidth: header_layout.implicitWidth
                 implicitHeight: 66
                 Layout.fillWidth: true
 
                 RowLayout {
                     id: header_layout
                     anchors.fill: parent
-                    anchors.margins: 8
 
                     Text {
                        id: btnshowparams
@@ -77,11 +76,12 @@ Rectangle {
                        font.bold: true;
                        color: "white"
                     }
-                }
-                StatusBtnGroup {
-                    anchors.top: node_header.top
-                    anchors.right: node_header.right
-                    anchors.bottom: node_header.bottom
+
+                    FillSpacer {}
+
+                    StatusBtnGroup {
+
+                    }
                 }
             }
 
@@ -91,6 +91,8 @@ Rectangle {
 
                 implicitWidth:  bodyLayout.implicitWidth
                 implicitHeight: bodyLayout.implicitHeight
+                Layout.fillWidth: false
+                Layout.fillHeight: false
 
                 ColumnLayout {
                     id: bodyLayout

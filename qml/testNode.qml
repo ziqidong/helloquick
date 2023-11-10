@@ -19,7 +19,7 @@ ApplicationWindow {
 
     ZNode {
         id: xxx_CreateSphere
-        name: "CreateSphere"
+        name: "CreateSphereCreateSphereCreateSphere"
         x: 200
         y: 150
     }
