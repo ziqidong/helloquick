@@ -3,14 +3,14 @@ import QtQuick.Controls 2.0
 
 
 Rectangle {
-    width: 96
+    width: 64
     height: 26
     color: "lightgrey"
     border.color: "grey"
 
     TextInput {
         anchors.fill: parent
-        anchors.margins: 2
+        anchors.margins: 6
         font.pointSize: 12
         focus: true
         onAccepted: console.log("accepted")

@@ -15,7 +15,7 @@ Rectangle {
 
     property int repeaterIndex
 
-    color: "black"
+    color: "#303030"
 
     signal showNodeMenu(var qmlnode, var pos)
 
@@ -53,13 +53,12 @@ Rectangle {
         }
         ColumnLayout  {
             id: mainLayout
-            spacing: 1
+            spacing: 0
             anchors.fill: parent
 
             Rectangle {
                 id: node_header
                 color: "#246283"
-                //color: "transparent"
                 implicitWidth: header_layout.implicitWidth
                 implicitHeight: 66
                 Layout.fillWidth: true
@@ -67,6 +66,8 @@ Rectangle {
                 RowLayout {
                     id: header_layout
                     anchors.fill: parent
+
+                    FixSpacer { width: 24; height: 1 }
 
                     Text {
                        id: btnshowparams
@@ -85,29 +86,40 @@ Rectangle {
                 }
             }
 
-            Rectangle {
-                id: node_body
-                color: "#303030"
+            FixSpacer { width: 1; height: 16 }
 
-                implicitWidth:  bodyLayout.implicitWidth
-                implicitHeight: bodyLayout.implicitHeight
-                Layout.fillWidth: false
-                Layout.fillHeight: false
+            ColumnLayout {
+                id: bodyLayout
+                anchors.margins: 8
 
-                ColumnLayout {
-                    id: bodyLayout
+                ZParam {
+                    id: param1
+                    name: "position"
+                    control: ZQuickParam.CTRL_VEC3
+                }
 
-                    ZParam {
-                        id: param1
-                        name: "position"
-                        control: ZQuickParam.CTRL_VEC3
-                    }
+                ZParam {
+                    id: param2
+                    name: "scaleSize"
+                    control: ZQuickParam.CTRL_LINEEDIT
+                }
 
-                    ZParam {
-                        id: param2
-                        name: "Noise Element Size"
-                        control: ZQuickParam.CTRL_LINEEDIT
-                    }
+                ZParam {
+                    id: param3
+                    name: "rotation"
+                    control: ZQuickParam.CTRL_VEC3
+                }
+
+                ZParam {
+                    id: param4
+                    name: "hasNormal"
+                    control: ZQuickParam.CTRL_CHECKBOX
+                }
+
+                ZParam {
+                    id: param5
+                    name: "hasVertUV"
+                    control: ZQuickParam.CTRL_CHECKBOX
                 }
             }
         }

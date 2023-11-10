@@ -18,6 +18,7 @@
         <file>qml/Socket.qml</file>
         <file>qml/testGraphEditor.qml</file>
         <file>qml/FillSpacer.qml</file>
+        <file>qml/FixSpacer.qml</file>
 
         <file>qml/controls/ZButton.qml</file>
         <file>qml/controls/ZCheckBox.qml</file>
@@ -30,6 +31,7 @@
         <file>qml/controls/ZVec2Editor.qml</file>
         <file>qml/controls/ZVec3Editor.qml</file>
         <file>qml/controls/ZVec4Editor.qml</file>
+        <file>qml/controls/VecEdit.qml</file>
 
         <file>images/qt-logo.png</file>
         <file>images/qt-logo@2x.png</file>

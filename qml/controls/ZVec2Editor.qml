@@ -11,8 +11,8 @@ Item {
         id: mainLayout
         anchors.fill: parent
         spacing: 10
-        ZLineEditor {}
-        ZLineEditor {}
+        VecEdit {}
+        VecEdit {}
     }
 }
 

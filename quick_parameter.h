@@ -24,7 +24,10 @@ public:
         CTRL_MULTITEXT,
         CTRL_PATH,
         CTRL_COMBOBOX,
-        CTRL_VEC3
+        CTRL_VEC2,
+        CTRL_VEC3,
+        CTRL_VEC4,
+        CTRL_CHECKBOX
     };
     Q_ENUMS(CONTROL_TYPE)
 

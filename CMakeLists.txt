@@ -44,6 +44,8 @@ set(source
     qml/StatusBtnSeperator.qml
     qml/GraphEditor.qml
     qml/Socket.qml
+    qml/FillSpacer.qml
+    qml/FixSpacer.qml
     qml/controls/ZButton.qml
     qml/controls/ZCheckBox.qml
     qml/controls/ZColorBtn.qml
@@ -55,6 +57,7 @@ set(source
     qml/controls/ZVec2Editor.qml
     qml/controls/ZVec3Editor.qml
     qml/controls/ZVec4Editor.qml
+    qml/controls/VecEdit.qml
 )
 
 add_executable(${PROJECT_NAME} ${source} "qml.qrc")
