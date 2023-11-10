@@ -39,6 +39,10 @@ RowLayout {
         }
     }
 
+    function createFixSpacer() {
+        var item = Qt.createQmlObject('import QtQuick 2.12; Rectangle {color: "transparent"; width: 6; height: 1}',qmlparam);
+    }
+
     function createControl() {
         var component = null;
         var controlObj = null;
@@ -86,6 +90,7 @@ RowLayout {
             createName()
             createFillSpacer()
             createControl()
+            createFixSpacer()
         }
         else {
             createFillSpacer()

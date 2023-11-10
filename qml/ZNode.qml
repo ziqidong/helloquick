@@ -176,6 +176,9 @@ Rectangle {
                     name: "DST"
                 }
             }
+
+            //bottom space
+            FixSpacer { width: 1; height: 16 }
         }
     }
 
