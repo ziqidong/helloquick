@@ -50,6 +50,7 @@ Rectangle {
             if (mouse.button == Qt.RightButton) {
                 showNodeMenu(qmlnode, Qt.point(mouse.x, mouse.y))
             }
+            qmlnode.forceActiveFocus()  //make all textInput focus out
         }
         ColumnLayout  {
             id: mainLayout
@@ -120,6 +121,11 @@ Rectangle {
                     id: param5
                     name: "hasVertUV"
                     control: ZQuickParam.CTRL_CHECKBOX
+                }
+                ZParam {
+                    id: param6
+                    name: "zfxCode"
+                    control: ZQuickParam.CTRL_MULTITEXT
                 }
             }
         }
