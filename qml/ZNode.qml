@@ -122,10 +122,58 @@ Rectangle {
                     name: "hasVertUV"
                     control: ZQuickParam.CTRL_CHECKBOX
                 }
+
                 ZParam {
                     id: param6
-                    name: "zfxCode"
+                    name: "isFlipFace"
+                    control: ZQuickParam.CTRL_CHECKBOX
+                }
+
+                ZParam {
+                    id: param7
+                    name: "div_w"
                     control: ZQuickParam.CTRL_MULTITEXT
+                }
+
+                ZParam {
+                    id: param8
+                    name: "div_h"
+                    control: ZQuickParam.CTRL_LINEEDIT
+                }
+
+                ZParam {
+                    id: param9
+                    name: "div_d"
+                    control: ZQuickParam.CTRL_LINEEDIT
+                }
+
+                ZParam {
+                    id: param10
+                    name: "size"
+                    control: ZQuickParam.CTRL_LINEEDIT
+                }
+
+                ZParam {
+                    id: param11
+                    name: "quads"
+                    control: ZQuickParam.CTRL_CHECKBOX
+                }
+
+                ZParam {
+                    id: param12
+                    name: "SRC"
+                }
+
+                ZParam {
+                    id: param13
+                    input: false
+                    name: "prim"
+                }
+
+                ZParam {
+                    id: param14
+                    input: false
+                    name: "DST"
                 }
             }
         }

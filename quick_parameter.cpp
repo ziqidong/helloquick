@@ -6,7 +6,7 @@ static int id_ = 0;
 ZQuickParam::ZQuickParam()
     : m_bInput(true)
     , m_type(ZPARAM_STRING)
-    , m_control(ZQuickParam::CTRL_LINEEDIT)
+    , m_control(ZQuickParam::CTRL_NONE)
 {
     //if (id_ == 0) {
     //    m_name = "sockName233";
@@ -27,6 +27,11 @@ ZQuickParam::ZQuickParam()
 QString ZQuickParam::getName()
 {
     return m_name;
+}
+
+void ZQuickParam::setInput(bool bInput)
+{
+    m_bInput = bInput;
 }
 
 void ZQuickParam::setName(QString name) {

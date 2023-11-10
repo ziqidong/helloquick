@@ -15,6 +15,7 @@ class ZQuickParam : public QQuickItem
     Q_OBJECT
         //Q_PROPERTY(bool input READ isInput)
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY name_changed)
+    Q_PROPERTY(bool input READ isInput WRITE setInput)
 
 public:
     enum CONTROL_TYPE
@@ -41,6 +42,7 @@ private:
 public:
     ZQuickParam();
     bool isInput() const { return m_bInput; }
+    void setInput(bool bInput);
     QString getName();
     void setName(QString name);
     PARAM_TYPE getType();
@@ -55,7 +57,7 @@ signals:
 
 private:
     QString         m_name;
-    const bool      m_bInput;
+    bool            m_bInput;
     PARAM_TYPE      m_type;
     CONTROL_TYPE    m_control;
     QVariant        m_value;

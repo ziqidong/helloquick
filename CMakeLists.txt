@@ -44,6 +44,7 @@ set(source
     qml/StatusBtnSeperator.qml
     qml/GraphEditor.qml
     qml/Socket.qml
+    qml/SocketName.qml
     qml/FillSpacer.qml
     qml/FixSpacer.qml
     qml/controls/ZButton.qml

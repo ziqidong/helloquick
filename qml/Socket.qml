@@ -9,8 +9,17 @@ import QtQuick.Shapes 1.6
 Item {
     id: comp
 
+    property bool input : true
+
     implicitWidth: shape.xline + shape.xradius
     implicitHeight: 2 * shape.yradius + shape.yline
+
+    transform: Matrix4x4 {
+        matrix: Qt.matrix4x4(input ? 1 : -1, 0, 0, input ? 0 :shape.xline + shape.xradius,
+                             0, 1, 0, 0,
+                             0, 0, 1, 0,
+                             0, 0, 0, 1)
+    }
 
     Shape {
         id: shape

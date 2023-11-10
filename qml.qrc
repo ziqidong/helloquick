@@ -16,6 +16,7 @@
         <file>qml/StatusBtnSeperator.qml</file>
         <file>qml/GraphEditor.qml</file>
         <file>qml/Socket.qml</file>
+        <file>qml/SocketName.qml</file>
         <file>qml/testGraphEditor.qml</file>
         <file>qml/FillSpacer.qml</file>
         <file>qml/FixSpacer.qml</file>

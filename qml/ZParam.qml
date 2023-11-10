@@ -1,8 +1,6 @@
 import QtQuick 2.12
-import QtQuick.Controls 1.2
 import QtQuick.Layouts 1.3
 import ZQuickParam 1.0
-//import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
 
 
@@ -10,24 +8,38 @@ RowLayout {
     id: qmlparam
     property alias name: thisdata.name
     property alias control: thisdata.control
+    property alias input: thisdata.input
+
     spacing: 10
 
     ZQuickParam {
         id: thisdata
     }
 
-    Socket {
+    function createSocket(isInput) {
+        var component = Qt.createComponent("qrc:/qml/Socket.qml");
+        if (component.status == Component.Ready) {
+            var obj = component.createObject(qmlparam)
+            obj.input = isInput
     }
-    Text {
-        text: thisdata.name
-        font.pixelSize: 18
-        font.bold: true
-        font.family: "Consolas"
-        color: "#dee6ed"
     }
-    FillSpacer {}
 
-    Component.onCompleted: {
+    function createName() {
+        var component = Qt.createComponent("qrc:/qml/SocketName.qml");
+        if (component.status == Component.Ready) {
+            var obj = component.createObject(qmlparam)
+            obj.text = thisdata.name
+        }
+    }
+
+    function createFillSpacer() {
+        var component = Qt.createComponent("qrc:/qml/FillSpacer.qml");
+        if (component.status == Component.Ready) {
+            var obj = component.createObject(qmlparam)
+        }
+    }
+
+    function createControl() {
         var component = null;
         var controlObj = null;
 
@@ -59,11 +71,26 @@ RowLayout {
         {
             component = Qt.createComponent("qrc:/qml/controls/ZVec4Editor.qml");
         }
-
+        if (component) {
         if (component.status == Component.Ready) {
             var controlObj = component.createObject(qmlparam)
             if (thisdata.control == ZQuickParam.CTRL_LINEEDIT || thisdata.control == ZQuickParam.CTRL_MULTITEXT)
                 controlObj.Layout.fillWidth = true
+        }
+    }
+    }
+
+    Component.onCompleted: {
+        if (thisdata.input) {
+            createSocket(true)
+            createName()
+            createFillSpacer()
+            createControl()
+        }
+        else {
+            createFillSpacer()
+            createName()
+            createSocket(false)
         }
     }
 }
