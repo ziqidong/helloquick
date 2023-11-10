@@ -21,15 +21,17 @@ RowLayout {
         if (component.status == Component.Ready) {
             var obj = component.createObject(qmlparam)
             obj.input = isInput
-    }
+        }
     }
 
     function createName() {
-        var component = Qt.createComponent("qrc:/qml/SocketName.qml");
-        if (component.status == Component.Ready) {
-            var obj = component.createObject(qmlparam)
-            obj.text = thisdata.name
-        }
+        //只有这种写法能binding c++类扩展的数据
+        var item = Qt.createQmlObject('
+            import QtQuick 2.12;
+            SocketName {
+                text: thisdata.name
+            }'
+            ,qmlparam);
     }
 
     function createFillSpacer() {
