@@ -10,7 +10,7 @@ import QtQuick.Controls.Styles 1.4
 Rectangle {
     id: qmlnode
     property string ident
-    property string name
+    property alias name: thisnode.name
     //property list<ZParam> params
 
     property int repeaterIndex
@@ -30,7 +30,6 @@ Rectangle {
 
     ZQuickNode {
         id: thisnode
-        name: parent.name
     }
 
     MouseArea {

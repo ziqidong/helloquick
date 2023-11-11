@@ -16,6 +16,7 @@ QString ZQuickNode::getName()
 void ZQuickNode::setName(QString name)
 {
     m_name = name;
+    emit name_changed();
 }
 
 void ZQuickNode::onMockCoreCallback()
