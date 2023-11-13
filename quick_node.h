@@ -11,7 +11,7 @@ class ZQuickNode : public QQuickItem
 {
     Q_OBJECT
     Q_PROPERTY(QString name READ getName WRITE setName NOTIFY name_changed)
-    Q_PROPERTY(QQmlListProperty<ZQuickParam> params READ params)
+    Q_PROPERTY(QQmlListProperty<ZQuickParam> params READ params NOTIFY params_changed)
 
 public:
     ZQuickNode();
@@ -31,6 +31,7 @@ private:
 
 signals:
     void name_changed();
+    void params_changed();
     void newparamCommand(QString paramName);
 
 private slots:

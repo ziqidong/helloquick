@@ -1,4 +1,7 @@
 #include "quick_node.h"
+#include <QQmlApplicationEngine>
+#include <QQmlContext>
+
 
 ZQuickNode::ZQuickNode()
 {
@@ -19,18 +22,6 @@ void ZQuickNode::setName(QString name)
     emit name_changed();
 }
 
-void ZQuickNode::onMockCoreCallback()
-{
-    if (false) {
-        //QQmlEngine* engine = QQmlEngine::contextForObject(this)->engine();
-        //QQmlComponent comp(engine, QUrl(QStringLiteral("qrc:/qml/testNode.qml")), QQmlComponent::PreferSynchronous);
-
-
-
-        //emit newparamCommand("newparam");
-    }
-}
-
 QQmlListProperty<ZQuickParam> ZQuickNode::params()
 {
     return QQmlListProperty<ZQuickParam>(this, this,
@@ -43,6 +34,7 @@ QQmlListProperty<ZQuickParam> ZQuickNode::params()
 void ZQuickNode::appendParam(ZQuickParam* param)
 {
     m_params.append(param);
+    emit params_changed();
 }
 
 int ZQuickNode::paramCount() const
@@ -57,7 +49,30 @@ ZQuickParam* ZQuickNode::param(int index) const
 
 void ZQuickNode::clearParam()
 {
-    return m_params.clear();
+    m_params.clear();
+    emit params_changed();
+}
+
+void ZQuickNode::onMockCoreCallback()
+{
+    if (false) {
+        QQmlEngine* engine = QQmlEngine::contextForObject(this)->engine();
+        QQmlComponent comp(engine, QUrl(QStringLiteral("qrc:/qml/ZParam.qml")));
+        QObject* myObject = comp.create();
+        ZQuickParam* item = qobject_cast<ZQuickParam*>(myObject);
+        item->setName("damidami");
+        item->setControl(ZQuickParam::CTRL_MULTITEXT);
+        if (this == this->parentItem()) {
+            int j;
+            j = 0;
+        }
+        appendParam(item);
+        //emit newparamCommand("newparam");
+    }
+
+    if (false) {
+        clearParam();
+    }
 }
 
 void ZQuickNode::appendParam(QQmlListProperty<ZQuickParam>* list, ZQuickParam* s)

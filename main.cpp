@@ -44,7 +44,11 @@ int main(int argc, char *argv[])
     qmlRegisterType<ZQuickParam>("ZQuickParam", 1, 0, "ZQuickParam");
     qmlRegisterType<ZQuickNode>("ZQuickNode", 1, 0, "ZQuickNode");
 
-    engine.load(QUrl(QStringLiteral("qrc:/qml/testGraphEditor.qml")));
+    //QQmlComponent comp(&engine, QUrl(QStringLiteral("qrc:/qml/ZParam2.qml")));
+    //QObject* myObject = comp.create();
+    //ZQuickParam* item = qobject_cast<ZQuickParam*>(myObject);
+
+    engine.load(QUrl(QStringLiteral("qrc:/qml/testNode.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 

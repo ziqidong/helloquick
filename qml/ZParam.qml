@@ -4,6 +4,24 @@ import ZQuickParam 1.0
 import QtQuick.Controls.Styles 1.4
 
 
+ZQuickParam {
+    id: thisdata
+    implicitWidth: mainLayout.implicitWidth
+    implicitHeight: mainLayout.implicitHeight
+
+    RowLayout {
+        id: mainLayout
+
+        Socket {
+        }
+    
+        SocketName {
+            text: thisdata.name
+        }
+    }
+}
+
+/*
 RowLayout {
     id: qmlparam
     property alias name: thisdata.name
@@ -101,3 +119,4 @@ RowLayout {
         }
     }
 }
+*/

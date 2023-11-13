@@ -26,6 +26,16 @@ set(source
     quick_parameter.h
     quick_graph.cpp
     quick_graph.h
+    znodeitem.cpp
+    znodeitem.h
+    zparamitem.cpp
+    zparamitem.h
+
+    models/NodesModel.cpp
+    models/NodesModel.h
+    models/ParamsModel.cpp
+    models/ParamsModel.h
+
     #qml:
     qml/layout.qml
     qml/main_question.qml
@@ -34,6 +44,7 @@ set(source
     qml/sidepanel.qml
     qml/main.qml
     qml/ZParam.qml
+    qml/ZParam2.qml
     qml/ZNode.qml
     qml/testParam.qml
     qml/testNode.qml
@@ -43,6 +54,7 @@ set(source
     qml/StatusBtnGroup.qml
     qml/StatusBtnSeperator.qml
     qml/GraphEditor.qml
+    qml/Graph.qml
     qml/Socket.qml
     qml/SocketName.qml
     qml/FillSpacer.qml
@@ -68,4 +80,5 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY AUTOMOC ON)
 set_property(TARGET ${PROJECT_NAME} PROPERTY AUTORCC ON)
 set_property(TARGET ${PROJECT_NAME} PROPERTY WIN32_EXECUTABLE OFF)
 
-target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick)
+target_link_libraries(${PROJECT_NAME} Qt5::Widgets Qt5::Core Qt5::Quick)
+target_include_directories(${PROJECT_NAME} PRIVATE .)

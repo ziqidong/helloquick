@@ -7,7 +7,9 @@
         <file>qml/MessageLabel.qml</file>
         <file>qml/sidepanel.qml</file>
         <file>qml/ZParam.qml</file>
+        <file>qml/ZParam2.qml</file>
         <file>qml/ZNode.qml</file>
+        <file>qml/Edge.qml</file>
         <file>qml/testParam.qml</file>
         <file>qml/testNode.qml</file>
         <file>qml/CustomBorder.qml</file>
@@ -20,6 +22,7 @@
         <file>qml/testGraphEditor.qml</file>
         <file>qml/FillSpacer.qml</file>
         <file>qml/FixSpacer.qml</file>
+        <file>qml/Graph.qml</file>
 
         <file>qml/controls/ZButton.qml</file>
         <file>qml/controls/ZCheckBox.qml</file>

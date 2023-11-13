@@ -12,7 +12,16 @@ ApplicationWindow {
     height: 480
     title: qsTr("Hello World")
 
+    //Graph {
+    //    anchors.fill: parent
+    //}
 
+    ZNode {
+        id: yyy_CreateCube
+        name: "CreateCube"
+    }
+
+    /*
     MouseArea {
         id: mouseArea
         anchors.fill: parent
@@ -31,5 +40,17 @@ ApplicationWindow {
             x: 200
             y: 150
         }
+
+        Edge {
+            id: edgetest
+            visible: true
+            point1x: yyy_CreateCube.x
+            point1y: yyy_CreateCube.y
+            point2x: xxx_CreateSphere.x
+            point2y: xxx_CreateSphere.y
+            color: "blue"
+            thickness: 2
+        }
     }
+    */
 }

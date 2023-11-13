@@ -21,12 +21,13 @@ ApplicationWindow {
             anchors.fill: parent
             anchors.margins: 0
 
-            ZParam {
+            /*
+            ZParam2 {
                 id: param1
                 name: "position"
-            }
+            }*/
         
-            ZParam {
+            ZParam2 {
                 id: param2
                 name: "scale"
             }

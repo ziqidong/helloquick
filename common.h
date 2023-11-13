@@ -1,5 +1,7 @@
 #pragma once
 
+#include <QtWidgets>
+
 //enum CONTROL_TYPE {
 //    CTRL_NONE,
 //    CTRL_LINEEDIT,
@@ -15,3 +17,23 @@ enum PARAM_TYPE {
     ZPARAM_STRING,
     ZPARAM_VEC3F,
 };
+
+enum MODEL_ROLE {
+    ROLE_OBJID = Qt::UserRole + 1,
+    ROLE_OBJNAME,
+    ROLE_PARAMS,        //paramsmodel
+};
+
+enum PARAM_CTRL
+{
+    PARAM_CTRL_NONE,
+    PARAM_CTRL_LINEEDIT,
+    PARAM_CTRL_MULTITEXT,
+    PARAM_CTRL_PATH,
+    PARAM_CTRL_COMBOBOX,
+    PARAM_CTRL_VEC2,
+    PARAM_CTRL_VEC3,
+    PARAM_CTRL_VEC4,
+    PARAM_CTRL_CHECKBOX
+};
+Q_ENUMS(PARAM_CTRL)
