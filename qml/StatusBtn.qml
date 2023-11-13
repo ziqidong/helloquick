@@ -10,12 +10,17 @@ Item {
     id: comp
     property var basefillcolor
     property alias color: path.fillColor
+    property alias mouseAreaAlias: mouseArea
+
     property int xoffset: 22
     property int side: 35
     property bool lastBtn: false
 
+
     implicitWidth: xoffset + side
     implicitHeight: parent.height
+
+    signal statusChanged(bool status)
 
     Shape {
         id: sp
@@ -56,23 +61,33 @@ Item {
             id: mouseArea
             anchors.fill: parent
             containmentMask: parent
-            //hoverEnabled: true
+            hoverEnabled: true
             acceptedButtons: Qt.LeftButton
             onClicked: {
-                parent.clicked = !parent.clicked
-            } 
-        }
-
-        /*HoverHandler{
-            onHoveredChanged: {
-                if (hovered) {
-                    path.fillColor = basefillcolor
-                }else{
+                doClick()
+            }
+            onEntered:{
+                path.fillColor = basefillcolor
+                statusChanged(true)
+            }
+            onExited:{
+                if(!parent.clicked){
                     path.fillColor = "#2E313A"
+                    statusChanged(false)
                 }
             }
-        }*/
-
+            function doClick(){
+                parent.clicked = !parent.clicked
+                if(parent.clicked){
+                    path.fillColor = basefillcolor
+                    statusChanged(true)
+                }
+                else{
+                    path.fillColor = "#2E313A"
+                    statusChanged(false)
+                }
+            }
+        }
     }
 }
 

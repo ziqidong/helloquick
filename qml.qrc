@@ -14,6 +14,7 @@
         <file>qml/testNode.qml</file>
         <file>qml/CustomBorder.qml</file>
         <file>qml/StatusBtn.qml</file>
+        <file>qml/StatusImgBtn.qml</file>
         <file>qml/StatusBtnGroup.qml</file>
         <file>qml/StatusBtnSeperator.qml</file>
         <file>qml/GraphEditor.qml</file>
