@@ -53,6 +53,7 @@ set(source
     qml/testGraphEditor.qml
     qml/CustomBorder.qml
     qml/StatusBtn.qml
+    qml/StatusImgBtn.qml
     qml/StatusBtnGroup.qml
     qml/StatusBtnSeperator.qml
     qml/GraphEditor.qml
@@ -75,7 +76,7 @@ set(source
     qml/controls/VecEdit.qml
 )
 
-add_executable(${PROJECT_NAME} ${source} "qml.qrc")
+add_executable(${PROJECT_NAME} ${source} "qml.qrc" "res/icons.qrc")
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY AUTOUIC ON)
 set_property(TARGET ${PROJECT_NAME} PROPERTY AUTOMOC ON)
