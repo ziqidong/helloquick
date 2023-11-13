@@ -7,7 +7,7 @@ project(helloquick LANGUAGES CXX)
 #set(CMAKE_AUTORCC ON)
 
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Core Quick REQUIRED)
 
 #file(GLOB_RECURSE source CONFIGURE_DEPENDS *.h *.cpp *.ui *.qml)
 
@@ -35,6 +35,8 @@ set(source
     models/NodesModel.h
     models/ParamsModel.cpp
     models/ParamsModel.h
+    models/Descriptors.cpp
+    models/Descriptors.h
 
     #qml:
     qml/layout.qml

@@ -48,6 +48,9 @@ int main(int argc, char *argv[])
     //QObject* myObject = comp.create();
     //ZQuickParam* item = qobject_cast<ZQuickParam*>(myObject);
 
+    
+
+
     engine.load(QUrl(QStringLiteral("qrc:/qml/testNode.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;

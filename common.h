@@ -22,6 +22,9 @@ enum MODEL_ROLE {
     ROLE_OBJID = Qt::UserRole + 1,
     ROLE_OBJNAME,
     ROLE_PARAMS,        //paramsmodel
+    ROLE_PARAM_TYPE,
+    ROLE_PARAM_CONTROL,
+    ROLE_ISINPUT
 };
 
 enum PARAM_CTRL
@@ -34,6 +37,21 @@ enum PARAM_CTRL
     PARAM_CTRL_VEC2,
     PARAM_CTRL_VEC3,
     PARAM_CTRL_VEC4,
-    PARAM_CTRL_CHECKBOX
+    PARAM_CTRL_CHECKBOX,
 };
 Q_ENUMS(PARAM_CTRL)
+
+struct SOCKET_DESCRIPTOR
+{
+    QString name;
+    QString type;
+    PARAM_CTRL control;
+};
+
+struct NODE_DESCRIPTOR
+{
+    QString name;
+
+    QList<SOCKET_DESCRIPTOR> inputs;
+    QList<SOCKET_DESCRIPTOR> outputs;
+};

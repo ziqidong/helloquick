@@ -1,5 +1,6 @@
 #include "NodesModel.h"
 #include "common.h"
+#include "Descriptors.h"
 
 
 NodesModel::NodesModel(QObject* parent)
@@ -69,6 +70,9 @@ QModelIndexList NodesModel::match(const QModelIndex& start, int role,
 
 void NodesModel::appendNode(QString ident, QString name)
 {
+    auto* pDescs = Descriptors::instance();
+    NODE_DESCRIPTOR desc = pDescs->getDescriptor(name);
+
     int nRows = m_nodes.size();
     beginInsertRows(QModelIndex(), nRows, nRows);
 
@@ -76,7 +80,7 @@ void NodesModel::appendNode(QString ident, QString name)
     pItem->setParent(this);
     pItem->ident = ident;
     pItem->name = name;
-    pItem->params = new ParamsModel;
+    pItem->params = new ParamsModel(desc);
 
     m_row2id[nRows] = ident;
     m_id2Row[ident] = nRows;
