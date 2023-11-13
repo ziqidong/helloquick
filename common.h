@@ -2,15 +2,6 @@
 
 #include <QtWidgets>
 
-//enum CONTROL_TYPE {
-//    CTRL_NONE,
-//    CTRL_LINEEDIT,
-//    CTRL_MULTITEXT,
-//    CTRL_PATH,
-//    CTRL_COMBOBOX,
-//    CTRL_VEC3
-//};
-
 enum PARAM_TYPE {
     ZPARAM_INT,
     ZPARAM_FLOAT,

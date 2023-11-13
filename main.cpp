@@ -62,7 +62,11 @@ int main(int argc, char *argv[])
         if (false) {
             QModelIndex idx = nodesModel->index(0, 0);
             //nodesModel->updateParamName(idx, 0, "pos2");
-            nodesModel->removeParam(idx, 0);
+            //nodesModel->removeParam(idx, 0);
+
+            ParamsModel* params = nodesModel->params(idx);
+            params->setData(params->index(0, 0), ParamControl::None, ROLE_PARAM_CONTROL);
+
             //nodesModel->setData(idx, "FUCKQML", ROLE_OBJNAME);
         }
     });

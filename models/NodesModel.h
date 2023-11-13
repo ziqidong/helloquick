@@ -48,6 +48,7 @@ public:
     //test functions:
     void updateParamName(QModelIndex nodeIdx, int row, QString newName);
     void removeParam(QModelIndex nodeIdx, int row);
+    ParamsModel* params(QModelIndex nodeIdx);
 
 private:
     QString m_graphName;

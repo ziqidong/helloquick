@@ -144,3 +144,9 @@ void NodesModel::removeParam(QModelIndex nodeIdx, int row)
     NodeItem* item = m_nodes[m_row2id[nodeIdx.row()]];
     item->params->removeRow(row);
 }
+
+ParamsModel* NodesModel::params(QModelIndex nodeIdx)
+{
+    NodeItem* item = m_nodes[m_row2id[nodeIdx.row()]];
+    return item->params;
+}
