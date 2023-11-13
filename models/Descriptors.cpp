@@ -1,8 +1,19 @@
 #include "Descriptors.h"
+#include <QQmlEngine>
+
+
+static QObject* MySingleTestInstancePtr(QQmlEngine* engine, QJSEngine* scriptEngine)
+{
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+    return Descriptors::instance();
+}
 
 
 Descriptors::Descriptors()
 {
+    initDescs();
+    qmlRegisterSingletonType<Descriptors>("Descriptors", 1, 0, "Descriptors", MySingleTestInstancePtr);
 }
 
 Descriptors* Descriptors::instance()
@@ -56,5 +67,17 @@ void Descriptors::initDescs()
         }
         }
     );
+
+    m_descs.insert("GetFrameNum",
+        {
+            "GetFrameNum",
+        {
+            {"SRC", "", PARAM_CTRL_NONE}
+        },
+        {
+            {"FrameNum", "int", PARAM_CTRL_NONE},
+            {"DST", "", PARAM_CTRL_NONE}
+        }
+    });
 
 }

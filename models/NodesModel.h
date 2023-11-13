@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QAbstractItemModel>
 #include <QString>
+#include <QQuickItem>
 #include "ParamsModel.h"
 
 struct NodeItem : public QObject
@@ -11,14 +12,19 @@ struct NodeItem : public QObject
     QString ident;
     QString name;
     ParamsModel* params;
+
+    //for subgraph:
+    //NodesModel* m_pSubgraphModel;
 };
 
 class NodesModel : public QAbstractItemModel
 {
     Q_OBJECT
     typedef QAbstractItemModel _base;
+    QML_ELEMENT
+
 public:
-    NodesModel(QObject* parent = nullptr);
+    NodesModel(const QString& graphName, QObject* parent = nullptr);
     ~NodesModel();
 
     //QAbstractItemModel
@@ -34,9 +40,14 @@ public:
         Qt::MatchFlags flags =
         Qt::MatchFlags(Qt::MatchStartsWith | Qt::MatchWrap)) const override;
     bool removeRows(int row, int count, const QModelIndex& parent = QModelIndex()) override;
+    QHash<int, QByteArray> roleNames() const override;
 
     //NodesModel:
     void appendNode(QString ident, QString name);
+
+    //test functions:
+    void updateParamName(QModelIndex nodeIdx, int row, QString newName);
+    void removeParam(QModelIndex nodeIdx, int row);
 
 private:
     QString m_graphName;

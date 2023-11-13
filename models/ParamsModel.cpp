@@ -33,3 +33,13 @@ bool ParamsModel::setData(const QModelIndex& index, const QVariant& value, int r
 {
     return QStandardItemModel::setData(index, value, role);
 }
+
+QHash<int, QByteArray> ParamsModel::roleNames() const
+{
+    QHash<int, QByteArray> roles;
+    roles[ROLE_OBJNAME] = "name";
+    roles[ROLE_PARAM_TYPE] = "type";
+    roles[ROLE_PARAM_CONTROL] = "control";
+    roles[ROLE_ISINPUT] = "input";
+    return roles;
+}

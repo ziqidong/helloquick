@@ -6,189 +6,11 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
 
-ZQuickNode {
-    id: thisnode
-
-    //property list<ZParam> params
-
-    implicitWidth:  qmlnode.implicitWidth
-    implicitHeight: qmlnode.implicitHeight
-
-    Rectangle {
-        id: qmlnode
-
-        anchors.fill: parent
-
-        property int repeaterIndex
-
-        color: "#303030"
-
-        signal showNodeMenu(var qmlnode, var pos)
-
-        CustomBorder
-        {
-            commonBorderWidth: 2
-            borderColor: "black"
-        }
-
-        implicitWidth:  mainLayout.implicitWidth
-        implicitHeight: mainLayout.implicitHeight
-
-        MouseArea {
-            id: mouseArea1
-            anchors.fill: parent
-            drag.target: parent
-            acceptedButtons: Qt.LeftButton | Qt.RightButton
-
-            onClicked: {
-                if (mouse.button == Qt.LeftButton) {
-                    console.log(thisnode.params.length);
-                }
-
-                if (mouse.button == Qt.RightButton) {
-                    var component = Qt.createComponent("qrc:/qml/ZParam.qml");
-                    if (component.status == Component.Ready) {
-                        var obj = component.createObject()
-                        obj.name = "pos"
-                        thisnode.params.push(obj)
-                        //
-                        //console.log("ok!")
-                    }
-                }
-            }
-
-            ColumnLayout  {
-                id: mainLayout
-                spacing: 0
-                anchors.fill: parent
-
-                Rectangle {
-                    id: node_header
-                    color: "#246283"
-                    implicitWidth: header_layout.implicitWidth
-                    implicitHeight: 66
-                    Layout.fillWidth: true
-
-                    RowLayout {
-                        id: header_layout
-                        anchors.fill: parent
-
-                        FixSpacer { width: 24; height: 1 }
-
-                        Text {
-                           id: btnshowparams
-                           text: thisnode.name
-                           font.family: "Consolas"
-                           font.pixelSize: 20;
-                           font.bold: true;
-                           color: "white"
-                        }
-
-                        FillSpacer {}
-
-                        StatusBtnGroup {
-
-                        }
-                    }
-                }
-
-                FixSpacer { width: 1; height: 16 }
-
-                ColumnLayout {
-                    id: bodyLayout
-                    anchors.margins: 8
-
-                    /*
-                    ListModel {
-                        id: myModel
-                        Component.onCompleted: {
-                            //myModel.append({paramInfo: {name: "position"}});
-                            //myModel.append({paramInfo: {name: "scale233"}});
-                        }
-                    }*/
-
-                    /*
-                    Repeater{
-                        //model: myModel
-                        model: thisnode.params
-                        
-                        ZParam {
-                            name: modelData.name
-                        }
-                    }
-                    */
-
-                    /*
-                    ZParam {
-                        id: param1
-                        name: "position"
-                        control: ZQuickParam.CTRL_VEC3
-                    }
-
-                    ZParam {
-                        id: param2
-                        name: "scaleSize"
-                        control: ZQuickParam.CTRL_LINEEDIT
-                    }
-
-                    ZParam {
-                        id: param3
-                        name: "rotation"
-                        control: ZQuickParam.CTRL_VEC3
-                    }
-                    */
-                }
-
-                //bottom space
-                FixSpacer { width: 1; height: 16 }
-            }
-        }
-
-        Connections {
-            target: thisnode
-            function onNewparamCommand()
-            {
-                //params.add(new ZParam {name:"param3"})
-                console.log("onNewparamCommand")
-            }
-            function onParams_changed()
-            {
-                for (let i = 0; i < thisnode.params.length; i++)
-                {
-                    var paramObj = thisnode.params[i]
-                    paramObj.parent = mainLayout
-                }
-                console.log("onParams_changed")
-            }
-        }
-
-        Component.onCompleted: {
-            for (let i = 0; i < thisnode.params.length; i++)
-            {
-                var paramObj = thisnode.params[i]
-                paramObj.parent = mainLayout
-            }
-             /*
-              var component = Qt.createComponent("qrc:/qml/ZParam.qml");
-              if (component.status == Component.Ready) {
-                    var obj = component.createObject()
-                    obj.name = "pos"
-                    obj.parent = mainLayout
-                    thisnode.params.push(obj)
-                    console.log("ok!")
-             }
-             */
-        }
-    }
-}
-
-/*
 Rectangle {
     id: qmlnode
-    property string ident
-    property alias name: thisnode.name
-    //property list<ZParam> params
-
+    property string arg_ident
+    property string arg_name     //arg_name是为了避免和model导出的name重名
+    property variant paramModel
     property int repeaterIndex
 
     color: "#303030"
@@ -203,10 +25,6 @@ Rectangle {
 
     implicitWidth:  mainLayout.implicitWidth
     implicitHeight: mainLayout.implicitHeight
-
-    ZQuickNode {
-        id: thisnode
-    }
 
     MouseArea {
         id: mouseArea1
@@ -245,7 +63,7 @@ Rectangle {
 
                     Text {
                        id: btnshowparams
-                       text: thisnode.name
+                       text: qmlnode.arg_name
                        font.family: "Consolas"
                        font.pixelSize: 20;
                        font.bold: true;
@@ -262,6 +80,46 @@ Rectangle {
 
             FixSpacer { width: 1; height: 16 }
 
+            /* 
+            //ListView调整高度很复杂，暂时不用
+            ListView {
+                id: bodyList
+                model: qmlnode.paramModel
+                //anchors.fill: parent
+                width: parent.width
+                //height: 50
+                orientation: ListView.Vertical
+
+
+                delegate: ZParam {
+                    required property string name
+                    required property string type
+                    required property bool input
+
+                    arg_name: name
+                    arg_isinput: input
+                }
+            }
+            */
+
+            ColumnLayout {
+                id: bodyLayout
+                anchors.margins: 8
+
+                Repeater{
+                    model: qmlnode.paramModel
+                    delegate: ZParam {
+                        required property string name
+                        required property string type
+                        required property bool input
+
+                        arg_name: name
+                        arg_isinput: input
+                    }
+                }
+            }
+
+            /*
             ColumnLayout {
                 id: bodyLayout
                 anchors.margins: 8
@@ -349,6 +207,7 @@ Rectangle {
                     name: "DST"
                 }
             }
+            */
 
             //bottom space
             FixSpacer { width: 1; height: 16 }
@@ -356,12 +215,13 @@ Rectangle {
     }
 
     Connections {
+        /*
         target: thisnode
         function onNewparamCommand()
         {
             //params.add(new ZParam {name:"param3"})
             console.log("onNewparamCommand")
         }
+        */
     }
 }
-*/

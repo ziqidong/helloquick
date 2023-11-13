@@ -16,9 +16,24 @@ ApplicationWindow {
     //    anchors.fill: parent
     //}
 
-    ZNode {
-        id: yyy_CreateCube
-        name: "CreateCube"
+    //ZNode {
+    //    id: yyy_CreateCube
+    //    name: "CreateCube"
+    //}
+
+    Repeater{
+        model: nodesModel
+
+        delegate: ZNode {
+            required property string name
+            required property string ident
+            required property variant params
+            arg_name: name
+            arg_ident: ident
+            paramModel: params
+            x: 200
+            y: 150
+        }
     }
 
     /*

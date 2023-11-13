@@ -3,14 +3,13 @@
 #include "Descriptors.h"
 
 
-NodesModel::NodesModel(QObject* parent)
+NodesModel::NodesModel(const QString& graphName, QObject* parent)
+    : m_graphName(graphName)
 {
-
 }
 
 NodesModel::~NodesModel()
 {
-
 }
 
 QModelIndex NodesModel::index(int row, int column, const QModelIndex& parent) const
@@ -49,7 +48,7 @@ QVariant NodesModel::data(const QModelIndex& index, int role) const
     case ROLE_OBJNAME:  return item->name;
     case ROLE_PARAMS:
     {
-        //todo: how to return the params model.
+        return QVariant::fromValue(item->params);
     }
     default:
         return QVariant();
@@ -58,7 +57,16 @@ QVariant NodesModel::data(const QModelIndex& index, int role) const
 
 bool NodesModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
-    return _base::setData(index, value, role);
+    NodeItem* item = m_nodes[m_row2id[index.row()]];
+
+    switch (role) {
+    case ROLE_OBJNAME:
+        item->name = value.toString();
+        emit dataChanged(index, index, QVector<int>{role});
+        return true;
+    }
+
+    return false;
 }
 
 QModelIndexList NodesModel::match(const QModelIndex& start, int role,
@@ -89,6 +97,15 @@ void NodesModel::appendNode(QString ident, QString name)
     endInsertRows();
 }
 
+QHash<int, QByteArray> NodesModel::roleNames() const
+{
+    QHash<int, QByteArray> roles;
+    roles[ROLE_OBJNAME] = "name";
+    roles[ROLE_OBJID] = "ident";
+    roles[ROLE_PARAMS] = "params";
+    return roles;
+}
+
 bool NodesModel::removeRows(int row, int count, const QModelIndex& parent)
 {
     beginRemoveRows(parent, row, row);
@@ -112,4 +129,18 @@ bool NodesModel::removeRows(int row, int count, const QModelIndex& parent)
 
     endRemoveRows();
     return true;
+}
+
+
+void NodesModel::updateParamName(QModelIndex nodeIdx, int row, QString newName)
+{
+    NodeItem* item = m_nodes[m_row2id[nodeIdx.row()]];
+    QModelIndex paramIdx = item->params->index(row, 0);
+    item->params->setData(paramIdx, newName, ROLE_OBJNAME);
+}
+
+void NodesModel::removeParam(QModelIndex nodeIdx, int row)
+{
+    NodeItem* item = m_nodes[m_row2id[nodeIdx.row()]];
+    item->params->removeRow(row);
 }

@@ -4,35 +4,20 @@ import ZQuickParam 1.0
 import QtQuick.Controls.Styles 1.4
 
 
-ZQuickParam {
-    id: thisdata
-    implicitWidth: mainLayout.implicitWidth
-    implicitHeight: mainLayout.implicitHeight
-
-    RowLayout {
-        id: mainLayout
-
-        Socket {
-        }
-    
-        SocketName {
-            text: thisdata.name
-        }
-    }
-}
-
-/*
 RowLayout {
     id: qmlparam
-    property alias name: thisdata.name
-    property alias control: thisdata.control
-    property alias input: thisdata.input
+    property string arg_name
+    property string arg_control
+    property string arg_isinput
 
     spacing: 10
 
-    ZQuickParam {
-        id: thisdata
+    /*
+    Socket {}
+    Text {
+        text: qmlparam.arg_name
     }
+    */
 
     function createSocket(isInput) {
         var component = Qt.createComponent("qrc:/qml/Socket.qml");
@@ -47,7 +32,7 @@ RowLayout {
         var item = Qt.createQmlObject('
             import QtQuick 2.12;
             SocketName {
-                text: thisdata.name
+                text: qmlparam.name
             }'
             ,qmlparam);
     }
@@ -67,45 +52,45 @@ RowLayout {
         var component = null;
         var controlObj = null;
 
-        if (thisdata.control == ZQuickParam.CTRL_LINEEDIT)
+        if (qmlparam.arg_control == ZQuickParam.CTRL_LINEEDIT)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZLineEditor.qml");
         }
-        else if (thisdata.control == ZQuickParam.CTRL_COMBOBOX)
+        else if (qmlparam.arg_control == ZQuickParam.CTRL_COMBOBOX)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZCombobox.qml");
         }
-        else if (thisdata.control == ZQuickParam.CTRL_MULTITEXT)
+        else if (qmlparam.arg_control == ZQuickParam.CTRL_MULTITEXT)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZTextEditor.qml");
         }
-        else if (thisdata.control == ZQuickParam.CTRL_CHECKBOX)
+        else if (qmlparam.arg_control == ZQuickParam.CTRL_CHECKBOX)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZCheckBox.qml");
         }
-        else if (thisdata.control == ZQuickParam.CTRL_VEC2)
+        else if (qmlparam.arg_control == ZQuickParam.CTRL_VEC2)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZVec2Editor.qml");
         }
-        else if (thisdata.control == ZQuickParam.CTRL_VEC3)
+        else if (qmlparam.arg_control == ZQuickParam.CTRL_VEC3)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZVec3Editor.qml");
         }
-        else if (thisdata.control == ZQuickParam.CTRL_VEC4)
+        else if (qmlparam.arg_control == ZQuickParam.CTRL_VEC4)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZVec4Editor.qml");
         }
         if (component) {
-        if (component.status == Component.Ready) {
-            var controlObj = component.createObject(qmlparam)
-            if (thisdata.control == ZQuickParam.CTRL_LINEEDIT || thisdata.control == ZQuickParam.CTRL_MULTITEXT)
-                controlObj.Layout.fillWidth = true
+            if (component.status == Component.Ready) {
+                var controlObj = component.createObject(qmlparam)
+                if (qmlparam.arg_control == ZQuickParam.CTRL_LINEEDIT || qmlparam.arg_control == ZQuickParam.CTRL_MULTITEXT)
+                    controlObj.Layout.fillWidth = true
+            }
         }
-    }
     }
 
     Component.onCompleted: {
-        if (thisdata.input) {
+        if (qmlparam.arg_isinput) {
             createSocket(true)
             createName()
             createFillSpacer()
@@ -119,4 +104,3 @@ RowLayout {
         }
     }
 }
-*/

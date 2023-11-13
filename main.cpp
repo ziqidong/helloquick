@@ -5,6 +5,7 @@
 #include "mytest.h"
 #include "quick_parameter.h"
 #include "quick_node.h"
+#include "models/NodesModel.h"
 #include <QFontDatabase>
 #include <QSurfaceFormat>
 
@@ -44,12 +45,29 @@ int main(int argc, char *argv[])
     qmlRegisterType<ZQuickParam>("ZQuickParam", 1, 0, "ZQuickParam");
     qmlRegisterType<ZQuickNode>("ZQuickNode", 1, 0, "ZQuickNode");
 
+    qRegisterMetaType<ParamsModel*>("ParamsModel*");
+
     //QQmlComponent comp(&engine, QUrl(QStringLiteral("qrc:/qml/ZParam2.qml")));
     //QObject* myObject = comp.create();
     //ZQuickParam* item = qobject_cast<ZQuickParam*>(myObject);
 
-    
+    NodesModel* nodesModel = new NodesModel("main");
+    nodesModel->appendNode("17d801b-CreateCube", "CreateCube");
 
+    QTimer timer;
+    QObject::connect(&timer, &QTimer::timeout, [=]() {
+        if (false) {
+            QModelIndex idx = nodesModel->index(0, 0);
+            //nodesModel->updateParamName(idx, 0, "pos2");
+            nodesModel->removeParam(idx, 0);
+            //nodesModel->setData(idx, "FUCKQML", ROLE_OBJNAME);
+        }
+    });
+    timer.start(1000);
+
+    nodesModel->appendNode("d8b3fc3d-ParticlesWrangle", "ParticlesWrangle");
+
+    engine.rootContext()->setContextProperty("nodesModel", nodesModel);
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/testNode.qml")));
     if (engine.rootObjects().isEmpty())
