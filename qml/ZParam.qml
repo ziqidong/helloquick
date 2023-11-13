@@ -2,13 +2,14 @@ import QtQuick 2.12
 import QtQuick.Layouts 1.3
 import ZQuickParam 1.0
 import QtQuick.Controls.Styles 1.4
+import zeno.enum 1.0
 
 
 RowLayout {
     id: qmlparam
     property string arg_name
-    property string arg_control
-    property string arg_isinput
+    property bool arg_isinput
+    property int arg_control
 
     spacing: 10
 
@@ -52,38 +53,40 @@ RowLayout {
         var component = null;
         var controlObj = null;
 
-        if (qmlparam.arg_control == ZQuickParam.CTRL_LINEEDIT)
+        //console.log(qmlparam.arg_control)
+
+        if (qmlparam.arg_control == ParamControl.Lineddit)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZLineEditor.qml");
         }
-        else if (qmlparam.arg_control == ZQuickParam.CTRL_COMBOBOX)
+        else if (qmlparam.arg_control == ParamControl.Combobox)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZCombobox.qml");
         }
-        else if (qmlparam.arg_control == ZQuickParam.CTRL_MULTITEXT)
+        else if (qmlparam.arg_control == ParamControl.Multiline)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZTextEditor.qml");
         }
-        else if (qmlparam.arg_control == ZQuickParam.CTRL_CHECKBOX)
+        else if (qmlparam.arg_control == ParamControl.Checkbox)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZCheckBox.qml");
         }
-        else if (qmlparam.arg_control == ZQuickParam.CTRL_VEC2)
+        else if (qmlparam.arg_control == ParamControl.Vec2edit)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZVec2Editor.qml");
         }
-        else if (qmlparam.arg_control == ZQuickParam.CTRL_VEC3)
+        else if (qmlparam.arg_control == ParamControl.Vec3edit)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZVec3Editor.qml");
         }
-        else if (qmlparam.arg_control == ZQuickParam.CTRL_VEC4)
+        else if (qmlparam.arg_control == ParamControl.Vec4edit)
         {
             component = Qt.createComponent("qrc:/qml/controls/ZVec4Editor.qml");
         }
         if (component) {
             if (component.status == Component.Ready) {
                 var controlObj = component.createObject(qmlparam)
-                if (qmlparam.arg_control == ZQuickParam.CTRL_LINEEDIT || qmlparam.arg_control == ZQuickParam.CTRL_MULTITEXT)
+                if (qmlparam.arg_control == ParamControl.Lineddit || qmlparam.arg_control == ParamControl.Multiline)
                     controlObj.Layout.fillWidth = true
             }
         }

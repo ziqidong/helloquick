@@ -10,7 +10,7 @@ struct ParamItem
 {
     QString name;
     QString type;
-    PARAM_CTRL control;
+    ParamControl::Value control = ParamControl::None;
     bool bInput = true;
 };
 

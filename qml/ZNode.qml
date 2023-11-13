@@ -4,6 +4,7 @@ import ZQuickNode 1.0
 import ZQuickParam 1.0
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
+import zeno.enum 1.0
 
 
 Rectangle {
@@ -95,6 +96,7 @@ Rectangle {
                     required property string name
                     required property string type
                     required property bool input
+                    required property ParamControl control
 
                     arg_name: name
                     arg_isinput: input
@@ -112,9 +114,11 @@ Rectangle {
                         required property string name
                         required property string type
                         required property bool input
+                        required property int control
 
-                        arg_name: name
+                        arg_name:    name
                         arg_isinput: input
+                        arg_control: control
                     }
                 }
             }

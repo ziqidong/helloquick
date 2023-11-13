@@ -27,25 +27,31 @@ enum MODEL_ROLE {
     ROLE_ISINPUT
 };
 
-enum PARAM_CTRL
+class ParamControl
 {
-    PARAM_CTRL_NONE,
-    PARAM_CTRL_LINEEDIT,
-    PARAM_CTRL_MULTITEXT,
-    PARAM_CTRL_PATH,
-    PARAM_CTRL_COMBOBOX,
-    PARAM_CTRL_VEC2,
-    PARAM_CTRL_VEC3,
-    PARAM_CTRL_VEC4,
-    PARAM_CTRL_CHECKBOX,
+    Q_GADGET
+public:
+    explicit ParamControl() {}
+
+    enum Value {
+        None,
+        Lineddit,
+        Multiline,
+        Pathedit,
+        Combobox,
+        Checkbox,
+        Vec2edit,
+        Vec3edit,
+        Vec4edit
+    };
+    Q_ENUM(Value)
 };
-Q_ENUMS(PARAM_CTRL)
 
 struct SOCKET_DESCRIPTOR
 {
     QString name;
     QString type;
-    PARAM_CTRL control;
+    ParamControl::Value control = ParamControl::None;
 };
 
 struct NODE_DESCRIPTOR
