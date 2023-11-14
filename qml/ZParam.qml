@@ -10,6 +10,7 @@ RowLayout {
     property string arg_name
     property bool arg_isinput
     property int arg_control
+    property var _controlObj : null
 
     spacing: 10
 
@@ -85,9 +86,9 @@ RowLayout {
         }
         if (component) {
             if (component.status == Component.Ready) {
-                var controlObj = component.createObject(qmlparam)
+                _controlObj = component.createObject(qmlparam)
                 if (qmlparam.arg_control == ParamControl.Lineddit || qmlparam.arg_control == ParamControl.Multiline)
-                    controlObj.Layout.fillWidth = true
+                    _controlObj.Layout.fillWidth = true
             }
         }
     }
@@ -104,6 +105,14 @@ RowLayout {
             createFillSpacer()
             createName()
             createSocket(false)
+        }
+    }
+
+    onArg_controlChanged: {
+        if (_controlObj) {
+            console.log("onArg_controlChanged")
+            _controlObj.destroy();
+            createControl()
         }
     }
 }

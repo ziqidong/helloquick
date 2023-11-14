@@ -65,7 +65,16 @@ int main(int argc, char *argv[])
             //nodesModel->removeParam(idx, 0);
 
             ParamsModel* params = nodesModel->params(idx);
-            params->setData(params->index(0, 0), ParamControl::None, ROLE_PARAM_CONTROL);
+            //params->removeRow(1);
+
+            //QStandardItem* pItem = new QStandardItem;
+            //pItem->setData("fuckme", ROLE_OBJNAME);
+            //pItem->setData("", ROLE_PARAM_TYPE);
+            //pItem->setData(ParamControl::Multiline, ROLE_PARAM_CONTROL);
+            //pItem->setData(true, ROLE_ISINPUT);
+            //params->insertRow(3, pItem);
+
+            params->setData(params->index(0, 0), ParamControl::Multiline, ROLE_PARAM_CONTROL);
 
             //nodesModel->setData(idx, "FUCKQML", ROLE_OBJNAME);
         }
