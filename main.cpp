@@ -85,7 +85,7 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("nodesModel", nodesModel);
 
-    engine.load(QUrl(QStringLiteral("qrc:/qml/testNode.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/testGraphEditor.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 

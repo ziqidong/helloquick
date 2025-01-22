@@ -24,6 +24,7 @@
         <file>qml/FillSpacer.qml</file>
         <file>qml/FixSpacer.qml</file>
         <file>qml/Graph.qml</file>
+		<file>qml/dialogTest.qml</file>
 
         <file>qml/controls/ZButton.qml</file>
         <file>qml/controls/ZCheckBox.qml</file>
