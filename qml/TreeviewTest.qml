@@ -55,31 +55,49 @@ ApplicationWindow {
 
     ScrollView {
         anchors.fill: parent
+        clip: true//要用clip，不能用flickable
 
-        contentItem: Flickable {
-            anchors.fill: parent
-            contentWidth: parent.width
-            contentHeight: treeLayout.height
-            clip: true
-
-            ColumnLayout {
-                id: treeLayout
-                width: parent.width // 确保宽度与 ScrollView 一致
-                spacing: 5
-                Repeater {
-                    model: treeModel
-                    delegate: Loader {
-                        Layout.fillWidth: true
-                        sourceComponent: tabComp
-                        onLoaded: {
-                            item.nodeName = model.name
-                            item.childrenNodes = model.children
-                            item.indent = 0
-                        }
+        ColumnLayout {
+            id: treeLayout
+            width: parent.width // 确保宽度与 ScrollView 一致
+            spacing: 5
+            Repeater {
+                model: treeModel
+                delegate: Loader {
+                    Layout.fillWidth: true
+                    sourceComponent: tabComp
+                    onLoaded: {
+                        item.nodeName = model.name
+                        item.childrenNodes = model.children
+                        item.indent = 0
                     }
                 }
             }
         }
+        //contentItem: Flickable {
+        //     anchors.fill: parent
+        //     contentWidth: parent.width
+        //     contentHeight: treeLayout.height
+        //     clip: true
+
+        //     ColumnLayout {
+        //         id: treeLayout
+        //         width: parent.width // 确保宽度与 ScrollView 一致
+        //         spacing: 5
+        //         Repeater {
+        //             model: treeModel
+        //             delegate: Loader {
+        //                 Layout.fillWidth: true
+        //                 sourceComponent: tabComp
+        //                 onLoaded: {
+        //                     item.nodeName = model.name
+        //                     item.childrenNodes = model.children
+        //                     item.indent = 0
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         
         
     }
